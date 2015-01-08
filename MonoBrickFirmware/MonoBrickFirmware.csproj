@@ -15,12 +15,15 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>bin\Debug\MonoBrickFirmware.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>false</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -100,6 +103,13 @@
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Display\Dialogs\DialogWithProgessAnimation.cs" />
     <Compile Include="Sensors\NoSensor.cs" />
+    <Compile Include="Sensors\UnknownSensor.cs" />
+    <Compile Include="FileSystem\ProgramManager.cs" />
+    <Compile Include="FileSystem\ProgramInformation.cs" />
+    <Compile Include="Sensors\MSDistanceSensor.cs" />
+    <Compile Include="Sensors\MSAngleSensor.cs" />
+    <Compile Include="Sensors\SensorAttachment.cs" />
+    <Compile Include="Sensors\SensorDetector.cs" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
@@ -119,5 +129,8 @@
     <EmbeddedResource Include="Display\Resources\profont_7.bin">
       <LogicalName>font.profont_7</LogicalName>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FileSystem\" />
   </ItemGroup>
 </Project>

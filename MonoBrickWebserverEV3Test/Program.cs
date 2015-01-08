@@ -7,6 +7,8 @@ using MonoBrickWebServer;
 using MonoBrickFirmware.UserInput;
 using MonoBrickFirmware.Display;
 using MonoBrickFirmware.Display.Dialogs;
+using System.Net;
+using System.IO;
 
 namespace MonoBrickWebserverEV3Test
 {
@@ -22,13 +24,16 @@ namespace MonoBrickWebserverEV3Test
 			Webserver.Instance.Stop();
 		}
 
-		static void Main(string[] args)
+		static void Main (string[] args)
 		{
-			StepContainer step = new StepContainer( StartWebserver, "Starting", "Failed to start");
-			Dialog dialog = new ProgressDialog("Webserver", step); 
-			dialog.Show();
-			dialog = new InfoDialog("Press enter to stop", true, "Webserver");
-			dialog.Show();
+			var step = new StepContainer (StartWebserver, "Starting server", "Failed to start");
+			Dialog dialog = new ProgressDialog("Webserver", step);
+			if (dialog.Show ()) {
+				dialog = new InfoDialog ("Press enter to stop", true, "Webserver");
+				dialog.Show ();
+				StopWebserver ();
+			}
+			
 		}
 	}
 }
